@@ -12,8 +12,8 @@
     "watch": "eleventy --watch",
     "dev": "eleventy --serve",
     "bench": "DEBUG=Eleventy:Benchmark* eleventy",
-    "build": "eleventy",
-    "clean": "del-cli _site",
+    "build": "npm run clean && eleventy",
+    "clean": "del-cli _dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

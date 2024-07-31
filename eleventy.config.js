@@ -16,7 +16,7 @@ const folder = path.resolve(globDirname, 'sources/')
 
 export default function (eleventyConfig) {
 	eleventyConfig.setServerPassthroughCopyBehavior('copy');
-	eleventyConfig.addPassthroughCopy("public");
+	// eleventyConfig.addPassthroughCopy("public");
 
 	// Plugins
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
@@ -41,7 +41,7 @@ export default function (eleventyConfig) {
 				mode: 'production',
 				emptyOutDir: true,
 				sourcemap: false,
-				manifest: true,
+				manifest: false,
 				rollupOptions: {
 					output: {
 						entryFileNames: 'assets/[name].[hash].js',
@@ -60,53 +60,32 @@ export default function (eleventyConfig) {
         snippets: "snippets"
       }
     },
-    mixManifest: "mix-manifest.json",
-    assets: {
-      root: "public",
-      base: "assets",
-      css: "styles",
-      js: "scripts",
-      images: "images",
-    },
+    // mixManifest: "mix-manifest.json",
+    // assets: {
+    //   root: "public",
+    //   base: "assets",
+    //   css: "styles",
+    //   js: "scripts",
+    //   images: "images",
+    // },
 		images: {
 			widths: [300, 600, 900],
 			formats: ["webp", "avif", "jpeg"],
 			additionalAttributes: "",
 		},
     dir: {
-      src: "views",
-      input: '',
-      layouts: "layouts",
-      output: '_dist',
+			input: 'views',
+			// better not use "public" as the name of the output folder (see above...)
+			output: '_dist',
+			includes: '../snippets',
+			layouts: '../layouts',
+			data: '../data'
     }
 	})
 
-	// eleventyConfig.addPlugin(eleventyPluginTwig, {
-  //   twig: {
-  //     namespaces: {
-  //       layouts: "views/layouts",
-  //       snippets: "views/snippets"
-  //     }
-  //   },
-  //   mixManifest: "mix-manifest.json",
-  //   assets: {
-  //     root: "src",
-  //     base: "assets",
-  //     css: "styles",
-  //     js: "styles",
-  //     images: "images",
-  //   },
-  //   dir: {
-  //     src: "views",
-  //     input: 'views/templates',
-  //     layouts: "views/layouts",
-  //     output: 'www',
-  //   }
-  // })
-
 	// Filters
 	Object.keys(filters).forEach((filterName) => {
-		eleventyConfig.addFilter(filterName, filters[filterName])
+		Twig.extendFilter(filterName, filters[filterName])
 	})
 
 	// Transforms
@@ -126,6 +105,7 @@ export default function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({
 		'sources/styles': 'assets',
 		'sources/scripts': 'assets',
+		'public': 'public',
 	})
 
 	return {
