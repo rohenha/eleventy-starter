@@ -1,4 +1,23 @@
+$font: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
 html {
   font-size: 62.5%;
-  background-color: red;
+  background-color: white;
+  font-family: $font;
+  color: black;
+}
+
+a {
+  color: black;
+  font-size: 1.3rem;
+}
+
+h1 {
+  font-size: 10rem;
+}
+
+footer {
+  font-size: 1.3rem;
+  text-align: center;
+  margin-top: 2rem;
 }

@@ -1,4 +1,8 @@
 ---
-layout: base
 ---
-<h1>Index page</h1>
+{% extends "@layouts/base.twig" %}
+{% block main %}
+    <h1>Index page</h1>
+    {{ img("sources/images/jul.png", { alt: 'test', class: 'm-image' }) }}
+    {{ img("sources/images/black-hole-wall.png", { alt: 'test', class: 'm-image' }) }}
+{% endblock %}
