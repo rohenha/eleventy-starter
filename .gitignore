@@ -1,0 +1,19 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+
+# Eleventy
+_dist/
+
+# Misc
+.DS_Store
+.env
+
+# Local Netlify folder
+.netlify

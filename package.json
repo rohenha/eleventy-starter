@@ -1,0 +1,38 @@
+{
+  "name": "eleventy-plus",
+  "version": "1.0.0",
+  "description": "Eleventy starter with twig and viteJS",
+  "main": "index.js",
+  "browserslist": [
+    "> 0.5%",
+    "not IE 11"
+  ],
+  "scripts": {
+    "dev2": "eleventy --serve --incremental",
+    "watch": "eleventy --watch",
+    "dev": "eleventy --serve",
+    "bench": "DEBUG=Eleventy:Benchmark* eleventy",
+    "build": "eleventy",
+    "clean": "del-cli _site",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eleventy",
+    "twig",
+    "vite",
+    "vanillajs",
+    "jamstack"
+  ],
+  "author": "rohenha",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy": "3.0.0-alpha.18",
+    "@11ty/eleventy-plugin-vite": "^5.0.0-alpha.1",
+    "autoprefixer": "^10.4.19",
+    "del-cli": "^5.1.0",
+    "sass": "^1.77.8",
+    "vite": "^5.3.5",
+    "vite-plugin-minify": "^1.5.2"
+  }
+}
