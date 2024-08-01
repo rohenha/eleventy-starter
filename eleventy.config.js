@@ -17,7 +17,6 @@ import filters from './utils/filters.js'
 import transforms from './utils/transforms.js'
 import shortcodes from './utils/shortcodes.js'
 
-
 import dotenv from 'dotenv'
 
 /* ─────────────────────────────────────────────────────── */
@@ -30,8 +29,6 @@ const folder = path.resolve(globDirname, 'sources/')
 
 export default function (eleventyConfig) {
 	const isProd = process.env.ELEVENTY_RUN_MODE == 'build'
-	// eleventyConfig.setServerPassthroughCopyBehavior('copy');
-	// eleventyConfig.addPassthroughCopy("public");
 
 	// Plugins
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
@@ -116,7 +113,6 @@ export default function (eleventyConfig) {
     },
     dir: {
 			input: 'views',
-			// better not use "public" as the name of the output folder (see above...)
 			output: '_dist',
 			includes: '../snippets',
 			layouts: '../layouts',
@@ -127,8 +123,6 @@ export default function (eleventyConfig) {
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		// which file extensions to process
 		extensions: "html",
-
-		// Add any other Image utility options here:
 
 		// optional, output image formats
 		widths: [500, 768, 1024, 1440, 1920],
@@ -186,7 +180,6 @@ export default function (eleventyConfig) {
 		passthroughFileCopy: true,
 		dir: {
 			input: 'views',
-			// better not use "public" as the name of the output folder (see above...)
 			output: '_dist',
 			includes: '../snippets',
 			layouts: '../layouts',
