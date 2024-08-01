@@ -8,9 +8,8 @@
     "not IE 11"
   ],
   "scripts": {
-    "dev2": "eleventy --serve --incremental",
     "watch": "eleventy --watch",
-    "dev": "npm run clean && eleventy --serve --incremental",
+    "dev": "eleventy --serve --incremental",
     "bench": "DEBUG=Eleventy:Benchmark* eleventy",
     "build": " eleventy",
     "clean": "del-cli _dist",
