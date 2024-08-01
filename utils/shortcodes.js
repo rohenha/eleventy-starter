@@ -1,46 +1,48 @@
-import Image from "@11ty/eleventy-img"
+// import Image from "@11ty/eleventy-img"
 
 export default {
-  img: function (src, params = {}) {
-		const options = {
-			outputDir: '_dist/assets/images',
-			useCache: false,
-			urlPath: `assets/images`,
-			widths: [500, 768, 1024],
-			formats: ["webp", "jpeg"],
-			transformOnRequest: process.env.ELEVENTY_RUN_MODE === "serve"
-		}
+  // img: async function (src, paramsUser = {}) {
+	// 	// Image generation options
+	// 	const options = {
+	// 		outputDir: '_dist/assets/images',
+	// 		useCache: true,
+	// 		urlPath: `assets/images`,
+	// 		widths: [500, 768, 1024],
+	// 		formats: ["webp", "auto"],
+	// 		transformOnRequest: process.env.ELEVENTY_RUN_MODE === "serve"
+	// 	}
 
-		Image(src, options)
-		const metadata = Image.statsSync(src, options)
+	// 	// Image element attributes
+	// 	const paramsDefault = {
+	// 		class: 'a-image',
+	// 		sizes: '100vw',
+	// 	}
+	// 	const params = Object.assign(paramsDefault, paramsUser)
 
-		let additionalAttributes = ''
-    Object.keys(params).forEach((param) => {
-			if (param !== '_keys') {
-				additionalAttributes += `${param}="${params[param]}" `
-			}
-    })
+	// 	// Generate image
+	// 	Image(src, options)
+	// 	const metadata = Image.statsSync(src, options)
 
-		const lowsrc = metadata.jpeg[0];
-		const highsrc = metadata.jpeg[metadata.jpeg.length - 1];
+	// 	// Generate attributes
+	// 	let additionalAttributes = ''
+  //   Object.keys(params).forEach((param) => {
+	// 		if (param !== '_keys') {
+	// 			additionalAttributes += `${param}="${params[param]}" `
+	// 		}
+  //   })
 
-		const sourceElements = `${Object.values(metadata)
-			.map((imageFormat) => {
-				return `<source type="${imageFormat[0].sourceType}" srcset="${imageFormat
-					.map((entry) => entry.srcset)
-					.join(", ")}">`;
-			})
-			.join("\n")}`;
+	// 	// Generate picture element
+	// 	const defaultFormat = metadata.jpeg ? 'jpeg' : 'png';
+	// 	const lowsrc = metadata[defaultFormat][0];
+	// 	const highsrc = metadata[defaultFormat][metadata[defaultFormat].length - 1];
 
-		const imageElement = `<img
-			src="${lowsrc.url}"
-			width="${highsrc.width}"
-			height="${highsrc.height}"
-			${additionalAttributes}>`;
+	// 	const sourceElements = Object.values(metadata).reduce((acc, imageFormat) => {
+	// 		return acc + `<source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map((entry) => entry.srcset).join(", ")}">\n`
+	// 	}, '')
 
-		return `<picture>
-			${sourceElements}
-			${imageElement}
-		</picture>`;
-  },
+	// 	return `<picture>
+	// 		${sourceElements}
+	// 		<img src="${lowsrc.url}" width="${highsrc.width}" height="${highsrc.height}" ${additionalAttributes}>
+	// 	</picture>`;
+  // },
 }

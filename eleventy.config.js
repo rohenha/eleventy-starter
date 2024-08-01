@@ -1,5 +1,6 @@
 import EleventyVitePlugin from '@11ty/eleventy-plugin-vite'
 import EleventyPluginTwig from '@factorial/eleventy-plugin-twig'
+import { eleventyImageTransformPlugin } from "@11ty/eleventy-img"
 
 import Twig from 'twig'
 
@@ -15,6 +16,7 @@ import shortcodes from './utils/shortcodes.js'
 
 import { fileURLToPath } from 'url'
 import path, { dirname } from 'path'
+import { log } from 'console'
 
 /* ─────────────────────────────────────────────────────── */
 
@@ -115,6 +117,39 @@ export default function (eleventyConfig) {
     }
 	})
 
+	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+		// which file extensions to process
+		extensions: "html",
+
+		// Add any other Image utility options here:
+
+		// optional, output image formats
+		widths: [500, 768, 1024, 1440, 1920],
+		outputDir: '_dist/assets/images',
+		formats: ["webp", "auto"],
+		urlPath: `assets/images`,
+		sharpOptions: {
+		},
+		sharpWebpOptions: {
+			quality: 70,
+			effort: 6,
+		},
+		sharpPngOptions: {
+			quality: 70,
+			compressionLevel: 7,
+		},
+		sharpJpegOptions: {
+			quality: 70,
+			effort: 6,
+		},
+
+		// optional, attributes assigned on <img> override these values.
+		defaultAttributes: {
+			loading: "lazy",
+			decoding: "async",
+		},
+	});
+
 	// Filters
 	Object.keys(filters).forEach((filterName) => {
 		Twig.extendFilter(filterName, filters[filterName])
@@ -137,7 +172,7 @@ export default function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({
 		'sources/styles': 'assets',
 		'sources/scripts': 'assets',
-		// 'sources/images': 'assets/images',
+		'sources/images': 'assets/images',
 		'public': 'public',
 	})
 

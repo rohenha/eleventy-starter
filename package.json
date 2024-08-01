@@ -10,7 +10,7 @@
   "scripts": {
     "dev2": "eleventy --serve --incremental",
     "watch": "eleventy --watch",
-    "dev": "eleventy --serve",
+    "dev": "npm run clean && eleventy --serve --incremental",
     "bench": "DEBUG=Eleventy:Benchmark* eleventy",
     "build": "npm run clean && eleventy",
     "clean": "del-cli _dist",
@@ -28,7 +28,7 @@
   "license": "ISC",
   "dependencies": {
     "@11ty/eleventy": "^3.0.0-beta.1",
-    "@11ty/eleventy-img": "^4.0.2",
+    "@11ty/eleventy-img": "^5.0.0-beta.9",
     "@11ty/eleventy-plugin-vite": "^5.0.0-alpha.1",
     "@factorial/eleventy-plugin-twig": "^0.1.3",
     "@fullhuman/postcss-purgecss": "^6.0.0",
