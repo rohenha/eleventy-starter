@@ -1,0 +1,36 @@
+@use "sass:map";
+
+$sizes: (
+  sm: 640px,
+  md: 1024px,
+  lg: 1366px,
+  xlg: 1440px,
+);
+$breakpoints: ();
+$bps: ();
+$screen: 'only screen';
+$retina: ('#{$screen} and (-webkit-min-device-pixel-ratio: 2)',
+'#{$screen} and (min--moz-device-pixel-ratio: 2)',
+'#{$screen} and (-o-min-device-pixel-ratio: 2/1)',
+'#{$screen} and (min-device-pixel-ratio: 2)',
+'#{$screen} and (min-resolution: 192dpi)',
+'#{$screen} and (min-resolution: 2dppx)'
+);
+$index: 0;
+
+@each $name, $size in $sizes {
+  $up: '#{$screen} and (min-width: #{$index})';
+  $down: '#{$screen} and (max-width: #{$size})';
+  $only: '#{$screen} and (min-width:#{$index}) and (max-width:#{$size})';
+  $breakpoints: map.merge($breakpoints, (
+    $name: (
+      up: $up,
+      only: $only,
+      down: $down,
+    )
+  ));
+  $bps: map.merge($bps, (
+    $up: $name,
+  ));
+  $index: $size + 1px;
+}

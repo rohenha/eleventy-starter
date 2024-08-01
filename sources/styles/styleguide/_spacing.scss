@@ -1,0 +1,24 @@
+.o-stlgSpacing {
+  display: grid;
+  gap: 3rem;
+
+  &__item {
+    display: grid;
+    gap: 1rem;
+  }
+
+  &__space {
+    width: 10rem;
+    background-color: clr('stnav');
+
+    @each $name, $space in $spacing {
+      &.-w#{$name} {
+        height: $space;
+      }
+    }
+  }
+
+  @include media(lg) {
+      grid-template-columns: repeat(5, 1fr);
+  }
+}

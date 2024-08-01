@@ -17,7 +17,7 @@ export default {
 				additionalAttributes += `${param}="${params[param]}" `
 			}
     })
-		return `<img src="../sources/images/${src}" ${additionalAttributes} data-lazy>`
+		return `<img src="../sources/images/${src}" ${additionalAttributes}>`
 	}
   // img: async function (src, paramsUser = {}) {
 	// 	// Image generation options

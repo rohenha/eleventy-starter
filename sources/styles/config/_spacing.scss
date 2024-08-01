@@ -1,0 +1,15 @@
+//  Vertical rhythm
+//  ───────────────────────────────────
+$vr: 3rem;
+$spacing: (
+  tiny: $vr * .25, // 7.5
+  xsm: $vr * .5, // 15
+  sm: $vr * .75, // 22.5
+  reg: $vr, // 30
+  md: $vr * 1.25, // 37.5
+  lg: $vr * 1.5, // 45
+  xlg: $vr * 2, // 60
+  huge: $vr * 2.5, // 75
+  giant: $vr * 3, // 90
+  xgiant: $vr * 4 // 120
+);

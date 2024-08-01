@@ -164,7 +164,7 @@ export default function (eleventyConfig) {
 	})
 
 	// Layouts
-	eleventyConfig.addLayoutAlias('base', 'base.twig')
+	eleventyConfig.addLayoutAlias('default', 'default.twig')
 
 	// Copy/pass-through files
 	eleventyConfig.addPassthroughCopy({

@@ -1,0 +1,20 @@
+.o-stlgMediaQueries {
+  display: grid;
+  gap: 3rem;
+
+
+  &__bar {
+    position: relative;
+    height: 10rem;
+    margin-top: 1rem;
+    background-color: clr('stnav');
+
+    p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      color: clr('white');
+      transform: translate(-50%, -50%);
+    }
+  }
+}

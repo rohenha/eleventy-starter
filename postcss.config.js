@@ -19,6 +19,7 @@ export default {
     purgecss({
       content: [
         './**/*.twig',
+        './sources/scripts/**/*.js',
       ],
     }),
   ],

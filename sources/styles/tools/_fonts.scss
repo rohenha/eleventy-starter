@@ -1,0 +1,116 @@
+@use "sass:map";
+@use "sass:list";
+
+// Function to selector font Family
+@function font($key) {
+  @return map.get($fonts, $key);
+}
+
+// Function to selector font Family
+@function fstyles($key) {
+  @return map.get($fstyles, $key);
+}
+
+@mixin fstyle($config, $size) {
+  $configsize: map.get($config, $size);
+  $size: map.get($configsize, 'size');
+  $line: map.get($configsize, 'line');
+  $letter: map.get($configsize, 'letter');
+  $family: map.get($configsize, 'family');
+  $weight: map.get($configsize, 'weight');
+  $style: map.get($configsize, 'style');
+  @content;
+
+  @if $weight {
+    font-weight: $weight;
+  }
+
+  @if $style {
+    font-style: $style;
+  }
+
+  @if $size {
+    font-size: $size;
+  }
+
+  @if $family {
+    font-family: font($family);
+  }
+
+  @if $line {
+    line-height: $line;
+  }
+
+  @if $letter {
+    letter-spacing: $letter;
+  }
+}
+
+// Function to convert px to rem
+@function px2rem($size) {
+  $remsize: $size / $font-size-base;
+
+  @return #{$remSize}rem;
+}
+
+// Function to convert letter spacing photoshop to rem
+@function ls2rem($size) {
+  $remsize: $size / 1000;
+
+  @return #{$remsize}rem;
+}
+
+// ==========================================================================
+// Tools / Font Faces
+// ==========================================================================
+
+$global-font-file-formats: "woff2", "woff" !default;
+
+// Builds the `src` list for an `@font-face` declaration.
+// @link https://github.com/thoughtbot/bourbon/blob/master/core/bourbon/utilities/_font-source-declaration.scss
+// @link http://goo.gl/Ru1bKP
+// @param  {String} $font-family  - The font family name.
+// @param  {String} $file-path    - The path to the font family.
+// @param  {List}   $file-formats - The file formats to request.
+// @return {List}
+
+// @require {function} list-contains
+
+// @access private
+
+@function font-source-declaration(
+  $font-family,
+  $file-path,
+  $file-formats
+) {
+  $src: ();
+  $formats-map: (
+    eot:   url("#{$assets-path}#{$file-path}.eot?#iefix") format("embedded-opentype"),
+    woff2: url("#{$assets-path}#{$file-path}.woff2") format("woff2"),
+    woff2var: url("#{$assets-path}#{$file-path}.woff2") format("woff2-variations"),
+    woff2supvar: url("#{$assets-path}#{$file-path}.woff2") format('woff2 supports variations'),
+    woff:  url("#{$assets-path}#{$file-path}.woff") format("woff"),
+    ttf:   url("#{$assets-path}#{$file-path}.ttf") format("truetype"),
+    svg:   url("#{$assets-path}#{$file-path}.svg##{$font-family}") format("svg"),
+  );
+
+  @each $key in $file-formats {
+    $format: map.get($formats-map, $key);
+    $src: list.append($src, $format, comma);
+  }
+
+  @return $src;
+}
+
+@mixin font-face(
+  $font-family,
+  $file-path,
+  $file-formats: $global-font-file-formats
+) {
+  @font-face {
+    @content;
+
+    font-family: $font-family;
+    src: font-source-declaration( $font-family, $file-path, $file-formats);
+  }
+}

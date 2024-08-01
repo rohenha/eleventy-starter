@@ -35,3 +35,19 @@ npm run bench
 
 ## Notes
 In dev mode a bug occurs for now, you can't exit process. To do it, CTRL+C as usual + kill terminal
+
+
+## Data 
+### Data global
+in `data/meta.js`
+### Data to override per page
+---
+template: home
+templateClass: home
+priority: 1
+title: Page d'accueil
+description: description
+ogTitle: title for social medias
+ogDescription: description for social medias
+ogCover: /assets/images/example.png
+---

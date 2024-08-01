@@ -1,0 +1,17 @@
+.a-link {
+  position: relative;
+  display: inline-block;
+
+  &.-hover,
+  &:focus {
+    &:not([aria-disabled]) {
+      background-color: clr(secondary);
+    }
+  }
+
+  @media (hover: hover) and (any-pointer: fine) {
+    &:hover:not([aria-disabled]) {
+      background-color: clr(secondary);
+    }
+  }
+}

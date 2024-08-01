@@ -1,0 +1,10 @@
+.o-stlgIcons {
+  display: flex;
+  flex-flow: row wrap;
+  gap: spacing(reg);
+
+  .a-svg {
+    width: 3rem;
+    height: 3rem;
+  }
+}

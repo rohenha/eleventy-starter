@@ -1,0 +1,80 @@
+.m-popin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: flex-start;
+    justify-content: stretch;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(clr('black'), .7);
+    cursor: pointer;
+    animation: leave-popin-overlay .3s cubic-bezier(0, 0, .2, 1);
+
+  }
+
+  &__container {
+    overflow-y: auto;
+    min-height: 100vh;
+    max-height: 100vh;
+    padding: spacing(reg);
+    background-color: clr('white');
+    color: clr('black');
+    text-align: center;
+    cursor: initial;
+    animation: leave-popin-up .3s cubic-bezier(0, 0, .2, 1) forwards;
+  }
+
+  &__close {
+    padding: 1rem 1rem .6rem;
+
+    .a-svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 1rem;
+      pointer-events: none;
+    }
+
+    .a-svg.-back{
+      margin-right: 0;
+    }
+
+    span {
+      pointer-events: none;
+    }
+  }
+
+  &.-isOpen {
+    display: block;
+  }
+
+  &.-bottom & {
+    &__container {
+      margin: auto auto 0;
+    }
+  }
+
+  &.-top & {
+    &__container {
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  &[aria-hidden="false"] & {
+    &__overlay {
+      animation: enter-popin-overlay .3s cubic-bezier(0, 0, .2, 1);
+    }
+
+    &__container {
+      animation: enter-popin-up .3s cubic-bezier(0, 0, .2, 1) forwards;
+    }
+  }
+}

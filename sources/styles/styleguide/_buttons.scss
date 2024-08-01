@@ -1,0 +1,31 @@
+.o-stlgButtons {
+  display: grid;
+  gap: spacing(xlg) subcol(1, 17);
+
+  &__item {
+    display: grid;
+    gap: 3rem;
+  }
+
+  &__button {
+    .t-styleguide__h5 {
+      margin-top: .5rem;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+
+  }
+
+
+  @include media(lg) {
+    grid-template-columns: repeat(2, 1fr);
+
+    &__grid {
+      display: flex;
+    }
+  }
+}

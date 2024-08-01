@@ -1,10 +1,11 @@
 ---
 priority: 1
-eleventyComputed:
-    title: Page d'accueil
-    description: description
+template: home
+templateClass: home
+title: Page d'accueil
+description: description
 ---
-{% extends "@layouts/base.twig" %}
+{% extends "@layouts/default.twig" %}
 {% block main %}
     <h1>Index page</h1>
     {% include "@snippets/atoms/button.twig" with {
@@ -12,7 +13,7 @@ eleventyComputed:
         href: '/button',
         class: 'button'
     } %}
-    {{ img('cover-actualites.jpg', { alt: 'cover', 'data-lazy': true }) }}
+    {{ img('cover-actualites.jpg', { alt: 'cover' }) }}
 
 
 {% endblock %}

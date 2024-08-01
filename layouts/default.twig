@@ -1,8 +1,12 @@
 {% set ogTitle = ogTitle|default(title|default(meta.ogTitle|default(meta.title))) %}
 {% set ogDescription = ogDescription|default(description|default(meta.ogDescription|default(meta.description))) %}
 {% set ogCover = ogCover|default(meta.ogCover) %}
+
+{% set template = template|default('default') %}
+{% set templateClassName = templateClass|default(template) %}
+
 <!DOCTYPE html>
-<html lang="{{ meta.lang }}">
+<html lang="{{ meta.lang }}" class="is-loading"{% if meta.debugging %} data-debug{% endif %}>
     <head>
         {# Default #}
         <meta charset="utf-8"/>
@@ -10,7 +14,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
         {# Multilangage #}
         <meta name="language" content="{{ meta.locale }}"/>
-        {# <link rel="canonical" href="{{ url }}" /> #}
         {% if meta.google_verification|default('') %}
             <meta name="google-site-verification" content="{{ meta.google_verification }}"/>
         {% endif %}
@@ -50,10 +53,18 @@
         {# Assets #}
         <link rel="preload" href="{{ "/assets/fonts/Gidole/Gidole-Regular.woff2"|url }}" as="font" type="font/woff2" crossorigin>
         <link rel="stylesheet" href="/assets/site.scss">
+        {# <link rel="stylesheet" href="/assets/site.scss" id="main-css" onload="this.media='all'; this.onload=null; this.isLoaded=true" media="print"> #}
+        {% block head endblock %}
     </head>
-    <body>
+    <body data-barba="wrapper" data-module-website="website" data-animate data-module-scroll="scroll">
+        {% include "@snippets/organisms/sprite.twig" %}
         {% include "@snippets/organisms/header.twig" %}
-        {% block main endblock %}
+        <main class="t-{{ templateClassName }} t-page" data-barba="container" data-barba-namespace="{{ template }}">
+            {% block main endblock %}
+        </main>
+
+        {% include "@snippets/organisms/footer.twig" %}
+        {% include "@snippets/organisms/templates.twig" %}
         <script type="module" src="/assets/site.js"></script>
     </body>
 </html>

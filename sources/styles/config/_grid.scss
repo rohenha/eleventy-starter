@@ -1,0 +1,17 @@
+/* stylelint-disable length-zero-no-unit */
+
+// Grid Settings
+$row-width: 144rem;
+$container-width: 100%;
+$total-columns: 24;
+$column-gutter: 0rem;
+$column-padding: 0rem;
+$column-width: 6rem;
+
+// Debug Settings
+$debgrid: true;
+$debgrid-gutters: false;
+$colorcolumnodd: rgba(red, .15);
+$colorcolumneven: rgba(red, .05);
+$colorgutter: transparent;
+$colorgutter-alt: rgba(red, .8);

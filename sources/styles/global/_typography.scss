@@ -1,0 +1,55 @@
+@each $name, $color in $colors {
+  .-clr#{$name} {
+    color: $color;
+  }
+  .-bg#{$name} {
+    background-color: $color;
+  }
+}
+
+.-txupp {
+  text-transform: uppercase;
+}
+
+.-txit {
+  font-style: italic;
+}
+
+.-tx700 {
+  font-weight: 700;
+}
+
+/* stylelint-disable-next-line block-no-empty */
+.-txalt {}
+
+@each $name, $style in $fstyles {
+  .tx-#{$name} {
+    @include fstyle($style, 'sm');
+  }
+}
+
+[class^="tx-"] {
+  strong,
+  b {
+    font-weight: 700;
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+}
+
+@include media(lg) {
+  @each $name, $style in $fstyles {
+    .tx-#{$name} {
+      @include fstyle($style, 'lg');
+    }
+  }
+
+  @each $name, $style in $fstyles {
+    .lg-tx-#{$name} {
+      @include fstyle($style, 'lg');
+    }
+  }
+}

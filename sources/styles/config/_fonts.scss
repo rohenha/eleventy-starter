@@ -1,0 +1,109 @@
+@use "sass:math";
+
+// Example
+
+// @font-face {
+//   font-family: 'Futura PT Cond';
+//   font-style: normal;
+//   font-weight: 500;
+//   font-display: swap;
+
+//   src: url('/assets/fonts/futura/FuturaPTCond-Medium.woff2') format('woff2'),
+//       url('/assets/fonts/futura/FuturaPTCond-Medium.woff') format('woff'),
+//       url('/assets/fonts/futura/FuturaPTCond-Medium.ttf') format('truetype');
+// }
+
+// Example Variable
+
+// @include font-face(
+//   "Clash",
+//   "assets/fonts/clash/ClashDisplay-Variable",
+//   ("woff2var", "woff2supvar", "woff")
+// ) {
+//   font-weight: 100 1000;
+//   font-style: normal;
+//   font-stretch: 25% 151%;
+//   font-display: swap;
+// }
+
+// @include font-face(
+//   "Radio Grotesk",
+//   "assets/fonts/radiogrotesk/RadioGrotesk-Regular",
+//   ("woff2", "woff", "ttf")
+// ) {
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
+$assets-path: "/" !default;
+
+@include font-face(
+  "Formula Condensed",
+  "fonts/FormulaCondensed-Bold",
+  ("woff2", "woff", "ttf")
+) {
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@include font-face(
+  "Formula Condensed",
+  "fonts/FormulaCondensed-Regular",
+  ("woff2", "woff", "ttf")
+) {
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+$font-size-base: 16;
+$font-size-percent: #{math.div(100, $font-size-base) * 10%};
+$font-regular: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$font-styleguide: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-title: 'Formula Condensed', sans-serif;
+$fonts: (
+  // Theme
+  "regular": $font-regular,
+  "title": $font-title,
+);
+$fstyles: (
+  "h1": (
+    "sm": (
+      'size': 10rem,
+      'line': 1,
+      'letter': 1rem,
+      'family': 'regular',
+      'style': italic,
+      'weight': 400,
+    ),
+    "lg": (
+      'size': 20rem,
+    ),
+  ),
+  "h2": (
+    "sm": (
+      'size': 5rem,
+    ),
+    "lg": (
+      'size': 10rem,
+    ),
+  ),
+  "h3": (
+    "sm": (
+      'size': 2rem,
+    ),
+    "lg": (
+      'size': 4rem,
+    ),
+  ),
+  "p": (
+    "sm": (
+      'size': 1rem,
+      'line': 1,
+    ),
+    "lg": (
+      'size': 1.8rem,
+    ),
+  ),
+);

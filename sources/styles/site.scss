@@ -1,33 +1,36 @@
-$font: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica',
-  'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+@use 'sass:math';
 
-html {
-  font-size: 62.5%;
-  background-color: white;
-  font-family: $font;
-  color: black;
-}
+// V E N D O R S
+//  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-a {
-  color: black;
-  font-size: 1.3rem;
-}
+// T O O L S
+//  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+@import 'tools/*';
+@import 'utils/reset';
+@import 'utils/config-reset';
+@import 'utils/helpers';
+@import 'utils/print';
 
-h1 {
-  font-size: 10rem;
-}
-
-footer {
-  font-size: 1.3rem;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-button {
-  font-size: 1.3rem;
-  padding: 1rem 2rem;
-  border: none;
-  background-color: black;
-  color: white;
-  cursor: pointer;
-}
+// C O N F I G
+//  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+@import 'config/breakpoints';
+@import 'config/colors';
+@import 'config/ease';
+@import 'config/fonts';
+@import 'config/grid';
+@import 'config/mixins';
+@import 'config/spacing';
+@import 'config/vars';
+@import 'global/typography';
+@import 'global/grid';
+@import 'global/grid-grid';
+@import 'global/commons';
+@import 'global/animations';
+@import 'global/accessibility';
+@import 'global/icons';
+@import 'global/state';
+@import 'atoms/*';
+@import 'molecules/*';
+@import 'blocks/*';
+@import 'organisms/*';
+@import 'templates/*';

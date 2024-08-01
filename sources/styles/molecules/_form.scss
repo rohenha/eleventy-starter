@@ -1,0 +1,43 @@
+.m-formCallback {
+  position: fixed;
+  right: spacing(reg);
+  bottom: spacing(reg);
+  z-index: 99;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - #{spacing(reg) * 2});
+  padding: spacing(sm);
+  border-radius: .4rem;
+  color: clr('white');
+  cursor: pointer;
+  animation: enter-y .7s $p4easeout forwards;
+
+  p {
+    width: 100%;
+  }
+
+  &.-success {
+    background-color: clr('success');
+  }
+
+  &.-error {
+    background-color: clr('alert');
+  }
+
+  &.-leave {
+    animation: leave-y .7s $p4easeout forwards;
+  }
+
+  .a-cross {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 1rem;
+  }
+
+  @include media(lg) {
+      max-width: 50rem;
+  }
+}

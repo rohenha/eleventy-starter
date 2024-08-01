@@ -1,0 +1,77 @@
+@use 'sass:color';
+
+.o-stlgAside {
+  position: fixed;
+  top: 0;
+  right: 100%;
+  z-index: 999;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 40%;
+  max-width: 50rem;
+  height: 100%;
+  padding-bottom: 8rem;
+  background-color: clr('stnav');
+  color: clr('stcolorinvert');
+  transition: transform .4s ease-in-out;
+
+  header {
+    margin-bottom: spacing(reg);
+    padding-top: spacing(reg);
+    text-align: center;
+
+    svg {
+      width: 4rem;
+      height: 4rem;
+      border: 1px solid currentcolor;
+
+      @include media(lg, up) {
+        width: 8rem;
+        height: 8rem;
+      }
+    }
+  }
+
+  hr {
+    border-color: color.adjust(clr('stnav'), $lightness: 20%);
+  }
+
+  ul {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
+    place-items: flex-start flex-start;
+    overflow-y: auto;
+    height: 100%;
+    padding: 3rem;
+
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__toggle {
+    position: fixed;
+    bottom: spacing(reg);
+    left: spacing(reg);
+    z-index: 1000;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: clr('black');
+    opacity: .5;
+    cursor: pointer;
+  }
+
+  @include media(lg) {
+    // left: 0;
+    width: col(5);
+  }
+}

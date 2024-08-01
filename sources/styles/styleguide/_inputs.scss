@@ -1,0 +1,25 @@
+.o-stlgInputs {
+  padding-top: spacing(xlg);
+  padding-bottom: spacing(xlg);
+  background-color: clr('white');
+
+  > main {
+    display: grid;
+    gap: spacing(xlg);
+  }
+
+  &__item {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @include media(lg) {
+    &__item {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__title {
+      grid-column: 1 / 4;
+    }
+  }
+}

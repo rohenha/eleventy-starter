@@ -1,0 +1,7 @@
+//  M I X I N S
+//  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// Function to selector spacing
+@function spacing($key) {
+  @return map-get($spacing, $key);
+}

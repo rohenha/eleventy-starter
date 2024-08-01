@@ -1,0 +1,9 @@
+.o-stlgTypo {
+  display: grid;
+  gap: spacing(xlg);
+
+  &__typo {
+    display: grid;
+    gap: .5rem;
+  }
+}
