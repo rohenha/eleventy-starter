@@ -1,7 +1,17 @@
 ---
+eleventyComputed:
+    title: Page d'accueil
+    description: description
 ---
 {% extends "@layouts/base.twig" %}
 {% block main %}
     <h1>Index page</h1>
+    {% include "@snippets/atoms/button.twig" with {
+        text: 'Button',
+        href: '/button',
+        class: 'button'
+    } %}
     {{ img('cover-actualites.jpg', { alt: 'cover', 'data-lazy': true }) }}
+
+
 {% endblock %}

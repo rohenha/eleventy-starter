@@ -12,7 +12,7 @@
     "watch": "eleventy --watch",
     "dev": "npm run clean && eleventy --serve --incremental",
     "bench": "DEBUG=Eleventy:Benchmark* eleventy",
-    "build": "npm run clean && eleventy",
+    "build": " eleventy",
     "clean": "del-cli _dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -34,6 +34,7 @@
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "autoprefixer": "^10.4.19",
     "del-cli": "^5.1.0",
+    "dotenv": "^16.4.5",
     "postcss-combine-media-query": "^1.0.1",
     "postcss-inline-svg": "^6.0.0",
     "postcss-sort-media-queries": "^5.2.0",

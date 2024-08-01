@@ -1,8 +1,9 @@
 
 export default {
-    // dateToFormat: function (date, format) {
-    //     return DateTime.fromJSDate(date, { zone: 'utc' }).toFormat(
-    //         String(format)
-    //     )
-    // },
+    dateToFormat: function (date) {
+        return new Date(date).toLocaleString()
+    },
+    url: function (url) {
+      return this.context.meta.url + url
+    },
 }

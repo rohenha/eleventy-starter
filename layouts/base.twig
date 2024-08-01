@@ -1,18 +1,54 @@
+{% set ogTitle = ogTitle|default(title|default(meta.ogTitle|default(meta.title))) %}
+{% set ogDescription = ogDescription|default(description|default(meta.ogDescription|default(meta.description))) %}
+{% set ogCover = ogCover|default(meta.ogCover) %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ meta.lang }}">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        {# Default #}
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
+        {# Multilangage #}
+        <meta name="language" content="{{ meta.locale }}"/>
+        {# <link rel="canonical" href="{{ url }}" /> #}
+        {% if meta.google_verification|default('') %}
+            <meta name="google-site-verification" content="{{ meta.google_verification }}"/>
+        {% endif %}
+        {# Title #}
+        <title>{{ title|default(meta.title)}}</title>
+        {# Meta description #}
+        <meta name="description" content="{{ description|default(meta.description) }}"/>
+        {# Robots #}
+        <meta name="robots" content="{{ seoIndexing|default(meta.seoIndexing) }}"/>
+        {# Open graph #}
+        <meta property="og:locale" content="{{ meta.locale }}"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="{{ page.url|url }}"/>
+        <meta property="og:site_name" content="{{ meta.title }}"/>
+        <meta property="og:title" content="{{ ogTitle }}"/>
+        <meta property="og:description" content="{{ ogDescription }}"/>
+        {# Twitter #}
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:site" content="{{ page.url|url }}" />
+        <meta name="twitter:title" content="{{ ogTitle }}"/>
+        <meta name="twitter:description" content="{{ ogDescription }}"/>
+        {# Image #}
+        {% if ogCover|length %}
+            <meta property="og:image" content="{{ ogCover|url }}"/>
+            <meta property="og:image:secure_url" content="{{ ogCover|url }}"/>
+            <meta name="twitter:image" content="{{ ogCover|url }}"/>
+        {% endif %}
         {# Favicon #}
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png"/>
-        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png"/>
-        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png"/>
-        <link rel="icon" href="/assets/favicon/favicon.ico"/>
-        <link rel="manifest" href="/assets/favicon/site.webmanifest"/>
-        <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#000000"/>
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ "/assets/favicon/apple-touch-icon.png"|url }}" />
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ "/assets/favicon/favicon-32x32.png"|url }}" />
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ "/assets/favicon/favicon-16x16.png"|url }}" />
+        <link rel="icon" href="{{ "/assets/favicon/favicon.ico"|url }}" />
+        <link rel="manifest" href="{{ "/assets/favicon/site.webmanifest"|url }}" />
+        <link rel="mask-icon" href="{{ "/assets/favicon/safari-pinned-tab.svg"|url }}" color="#000000"/>
         <meta name="msapplication-TileColor" content="#000000"/>
         <meta name="theme-color" content="#000000"/>
+        {# Assets #}
+        <link rel="preload" href="{{ "/assets/fonts/Gidole/Gidole-Regular.woff2"|url }}" as="font" type="font/woff2" crossorigin>
         <link rel="stylesheet" href="/assets/site.scss">
     </head>
     <body>

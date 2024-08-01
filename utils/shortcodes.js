@@ -5,6 +5,8 @@ export default {
 		const paramsDefault = {
 			class: 'a-image',
 			sizes: '100vw',
+			// loading: "lazy",
+			// decoding: "async",
 		}
 		const params = Object.assign(paramsDefault, paramsUser)
 
@@ -15,7 +17,7 @@ export default {
 				additionalAttributes += `${param}="${params[param]}" `
 			}
     })
-		return `<img src="../sources/images/${src}" ${additionalAttributes}>`
+		return `<img src="../sources/images/${src}" ${additionalAttributes} data-lazy>`
 	}
   // img: async function (src, paramsUser = {}) {
 	// 	// Image generation options

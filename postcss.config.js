@@ -18,7 +18,7 @@ export default {
     combinemedias(),
     purgecss({
       content: [
-        './**/*.html',
+        './**/*.twig',
       ],
     }),
   ],

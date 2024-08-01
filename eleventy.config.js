@@ -10,21 +10,26 @@ import sassGlobImports from 'vite-plugin-sass-glob-import'
 import { visualizer } from 'rollup-plugin-visualizer'
 import rollupPluginCritical from 'rollup-plugin-critical'
 
+import { fileURLToPath } from 'url'
+import path, { dirname } from 'path'
+
 import filters from './utils/filters.js'
 import transforms from './utils/transforms.js'
 import shortcodes from './utils/shortcodes.js'
 
-import { fileURLToPath } from 'url'
-import path, { dirname } from 'path'
-import { log } from 'console'
+
+import dotenv from 'dotenv'
 
 /* ─────────────────────────────────────────────────────── */
+// Load environment variables
+dotenv.config()
 
 const filename = fileURLToPath(import.meta.url)
 const globDirname = dirname(filename)
 const folder = path.resolve(globDirname, 'sources/')
 
 export default function (eleventyConfig) {
+	const isProd = process.env.ELEVENTY_RUN_MODE == 'build'
 	// eleventyConfig.setServerPassthroughCopyBehavior('copy');
 	// eleventyConfig.addPassthroughCopy("public");
 
@@ -40,13 +45,15 @@ export default function (eleventyConfig) {
 					'@scripts/': `${folder}/scripts/`,
 				},
 			},
+			base: isProd ? process.env.ELEVENTY_URL : '/',
 			publicDir: 'public',
 			clearScreen: false,
+			appType: 'custom',
+			assetsInclude: ['**/*.xml', '**/*.txt'],
 			server: {
 				mode: 'development',
 				middlewareMode: true,
 			},
-			appType: 'custom',
 			build: {
 				mode: 'production',
 				emptyOutDir: true,

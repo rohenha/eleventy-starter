@@ -1,4 +1,4 @@
 export default {
-    env: process.env.ELEVENTY_ENV,
-    timestamp: new Date()
+  env: process.env.ELEVENTY_RUN_MODE,
+  timestamp: new Date().toLocaleString()
 }
