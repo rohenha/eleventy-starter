@@ -1,6 +1,22 @@
 // import Image from "@11ty/eleventy-img"
 
 export default {
+	img: (src, paramsUser = {}) => {
+		const paramsDefault = {
+			class: 'a-image',
+			sizes: '100vw',
+		}
+		const params = Object.assign(paramsDefault, paramsUser)
+
+		// Generate attributes
+		let additionalAttributes = ''
+    Object.keys(params).forEach((param) => {
+			if (param !== '_keys') {
+				additionalAttributes += `${param}="${params[param]}" `
+			}
+    })
+		return `<img src="../sources/images/${src}" ${additionalAttributes}>`
+	}
   // img: async function (src, paramsUser = {}) {
 	// 	// Image generation options
 	// 	const options = {
